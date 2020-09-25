@@ -1,0 +1,23 @@
+html, button, input, select, textarea, p, a {
+    color: #EEE;
+    background: #272823
+}
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a{cursor: pointer; color: crimson}
+body {font-size: 1em; line-height: 1.4; }
+
+.plan__occurences {display: flex; flex-wrap: wrap;}
+
+.occurence {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: white 1px solid;
+}
+
+.occurence__title {font-size: 20px;}
+
+.occurence-task {margin-left: 10px;}
