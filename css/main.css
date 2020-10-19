@@ -15,7 +15,7 @@ input {
 	padding: 4px;
 	font-size: 1em;
 	border: 1px solid #EEE;
-	border-radius: 3px;
+	border-radius: 9px;
 }
 
 input:focus {
@@ -27,7 +27,7 @@ input:focus {
 	margin-top: 4px;
 	padding: 6px 14px;
 	background-color: #599bb3;
-	border-radius: 6px;
+	border-radius: 9px;
 	border: 2px solid #29668f;
 	cursor: pointer;
 	color: #ffffff;
@@ -44,7 +44,7 @@ input:focus {
 .add-btn {
 	width: 200px;
 	padding: 6px 14px;
-	border-radius: 6px;
+	border-radius: 9px;
 	border: 2px dashed #EEE;
 	cursor: pointer;
 	color: #EEE;
@@ -61,8 +61,13 @@ input:focus {
 	transition: ease .2s;
 }
 
+.delete {
+	display: flex;
+	justify-content: center;
+	width: 26px;
+}
 .delete__img {
-	height: 100%;
+	height: 50%;
 	width: auto;
 	margin: auto 0;
 	cursor: pointer;
@@ -70,6 +75,7 @@ input:focus {
 
 .input-name__edit {
 	display: flex;
+	height: 38px;
 	margin: 4px 0;
 }
 
