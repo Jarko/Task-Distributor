@@ -1,15 +1,15 @@
-import btn from './btn.js';
+import delete_btn from './delete.js';
 
 export default {
   name: 'task',
   components: {
-    btn: btn
+    "delete-btn": delete_btn
   },
   template: `
     <div class="task">
       <div class="task__edit">
         <input v-model="name" type="text" placeholder="Name"></input>
-        <img class="delete" src="./resources/x-mark-32.png" v-on:click="removeTask()" />
+        <delete-btn @click="removeTask()"></delete-btn>
       </div>
     </div>
   `,

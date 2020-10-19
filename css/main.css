@@ -43,7 +43,7 @@ input:focus {
 	margin-left: 10px;
 }
 
-.delete {
+.delete__img {
 	height: 100%;
 	width: auto;
 	margin: auto 0;
@@ -54,6 +54,12 @@ input:focus {
 	display: flex;
 	margin: 4px 0;
 }
+
+.task__edit {
+	display: flex;
+	margin: 4px 0;
+}
+
 
 .plan__occurences {display: flex; flex-wrap: wrap;}
 
