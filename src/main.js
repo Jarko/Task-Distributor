@@ -36,8 +36,18 @@ new Vue({
     people() {
       return store.state.people;
     },
+    filled_people() {
+      return this.people.filter(person => {
+        return person.name;
+      });
+    },
     tasks() {
       return store.state.tasks;
+    },
+    filled_tasks() {
+      return this.tasks.filter(task => {
+        return task.name;
+      });
     },
     is_planned() {
       return this.plan ? true : false;
@@ -48,14 +58,13 @@ new Vue({
     createPlan() {
       let temp_plan = [];
 
-      this.weighted_people = this.people.map(person => {
+      this.weighted_people = this.filled_people.map(person => {
         let temp_person = person;
         temp_person['tasks'] = [];
-        this.tasks.forEach(task => 
+        this.filled_tasks.forEach(task => 
           temp_person['tasks'].push({id: task.id, weight: this.skipped_occurence_weight})
         );
 
-        console.log(temp_person);
         return temp_person;
       });
 
@@ -70,13 +79,13 @@ new Vue({
       let occurence = [];
       let picked_people = [];
 
-      this.tasks.forEach(task => {
-        let picked_person = this.pickPerson(this.weighted_people, task.id, picked_people);
+      this.filled_tasks.forEach((task, index) => {
+        let picked_person = this.pickPerson(this.weighted_people, index, picked_people);
         picked_people.push(picked_person.id);
 
         occurence.push({name: task.name, person: picked_person.name});
 
-        this.updateWeights(picked_person.id, task.id);
+        this.updateWeights(picked_person.id, index);
 
       });
 
@@ -87,7 +96,7 @@ new Vue({
       return occurence;
     },
 
-    pickPerson(people, task_id, picked_ids = []) {
+    pickPerson(people, task_index, picked_ids = []) {
       let filtered_people = people.filter(person => {
         let picked = false;
 
@@ -99,31 +108,27 @@ new Vue({
 
         return !picked;
       });
-      console.log('Filtered');
-      console.log(filtered_people);
+      console.log();
       let person = filtered_people.reduce((p, c) => {
-        return p.tasks[task_id - 1].weight > c.tasks[task_id - 1].weight ? p : c;
+        return p.tasks[task_index].weight > c.tasks[task_index].weight ? p : c;
       });
-
-      console.log('Chose: ' + person.name);
 
       return person;
     },
 
     //TODO The weights don't update correctly
-    updateWeights(picked_id, task_id) {
+    updateWeights(picked_id, task_index) {
       this.weighted_people.forEach((person, index) => {
         if(person.id == picked_id) {
-          this.weighted_people[index].tasks[task_id - 1].weight = 0;
+          this.weighted_people[index].tasks[task_index].weight = 0;
         } else {
-         this.weighted_people[index].tasks[task_id - 1].weight += this.skipped_task_weight;
+         this.weighted_people[index].tasks[task_index].weight += this.skipped_task_weight;
         }
       });
     },
     updateWeightsAll(picked_ids) {
       this.weighted_people.forEach((person, person_index) => {
         let has_task = picked_ids.find(id => id === person.id);
-        console.log(person.name + ' has task? ' + has_task);
         if(!has_task) {
           this.tasks.forEach((task, task_index) => {
             this.weighted_people[person_index].tasks[task_index].weight += this.skipped_occurence_weight;

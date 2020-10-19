@@ -15,13 +15,15 @@ export default {
   `,
 
   props: ['person'],
-  data () {
-    return {
-      name: '',
-    };
-  },
-  mounted () {
-    this.name = this.person.name;
+  computed: {
+    name: {
+      get () {
+        return this.person.name;
+      },
+      set (name) {
+        this.$store.commit('renamePerson', {id: this.person.id, name: name});
+      }
+    }
   },
   methods: {
     removePerson () {

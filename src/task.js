@@ -15,13 +15,15 @@ export default {
   `,
 
   props: ['task'],
-  data () {
-    return {
-      name: '',
-    };
-  },
-  mounted () {
-    this.name = this.task.name;
+  computed: {
+    name: {
+      get () {
+        return this.task.name;
+      },
+      set (name) {
+        this.$store.commit('renameTask', {id: this.task.id, name: name});
+      }
+    }
   },
   methods: {
     removeTask () {
