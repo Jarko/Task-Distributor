@@ -101,7 +101,10 @@ new Vue({
       });
       console.log('Filtered');
       console.log(filtered_people);
-      let person = filtered_people.reduce((p, c) => p.tasks[task_id - 1].weight > c.tasks[task_id - 1].weight ? p : c);
+      let person = filtered_people.reduce((p, c) => {
+        return p.tasks[task_id - 1].weight > c.tasks[task_id - 1].weight ? p : c;
+      });
+
       console.log('Chose: ' + person.name);
 
       return person;
@@ -109,21 +112,21 @@ new Vue({
 
     //TODO The weights don't update correctly
     updateWeights(picked_id, task_id) {
-      this.weighted_people.forEach(person => {
+      this.weighted_people.forEach((person, index) => {
         if(person.id == picked_id) {
-          this.weighted_people[person.id - 1].tasks[task_id - 1].weight = 0;
+          this.weighted_people[index].tasks[task_id - 1].weight = 0;
         } else {
-         this.weighted_people[person.id - 1].tasks[task_id - 1].weight += this.skipped_task_weight;
+         this.weighted_people[index].tasks[task_id - 1].weight += this.skipped_task_weight;
         }
       });
     },
     updateWeightsAll(picked_ids) {
-      this.weighted_people.forEach(person => {
+      this.weighted_people.forEach((person, person_index) => {
         let has_task = picked_ids.find(id => id === person.id);
         console.log(person.name + ' has task? ' + has_task);
         if(!has_task) {
-          this.tasks.forEach(task => {
-            this.weighted_people[person.id - 1].tasks[task.id - 1].weight += this.skipped_occurence_weight;
+          this.tasks.forEach((task, task_index) => {
+            this.weighted_people[person_index].tasks[task_index].weight += this.skipped_occurence_weight;
           })
           
         }

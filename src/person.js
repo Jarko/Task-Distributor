@@ -7,10 +7,9 @@ export default {
   },
   template: `
     <div class="person">
-      <div v-show="!is_editing">{{ person.name }}</div>
-      <div v-show="is_editing" class="person__edit">
+      <div class="person__edit">
         <input v-model="name" type="text" placeholder="Name"></input>
-        <img class="delete" src="./resources/x-mark-32.png" v-on:click="renamePerson()" />
+        <img class="delete" src="./resources/x-mark-32.png" v-on:click="removePerson()" />
       </div>
     </div>
   `,
@@ -18,7 +17,6 @@ export default {
   props: ['person'],
   data () {
     return {
-      is_editing: true,
       name: '',
     };
   },
@@ -26,9 +24,8 @@ export default {
     this.name = this.person.name;
   },
   methods: {
-    renamePerson () {
-      this.$store.commit('renamePerson', {id: this.person.id, name: this.name});
-      this.is_editing = false;
+    removePerson () {
+      this.$store.commit('removePerson', this.person.id);
     }
   }
 };

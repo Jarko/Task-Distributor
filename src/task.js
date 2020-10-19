@@ -7,10 +7,9 @@ export default {
   },
   template: `
     <div class="task">
-      <div v-show="!is_editing">{{ task.name }}</div>
-      <div v-show="is_editing" class="task__edit">
+      <div class="task__edit">
         <input v-model="name" type="text" placeholder="Name"></input>
-        <btn class="buttton__input" v-on:click="renameTask()" label="Accept"></btn>
+        <img class="delete" src="./resources/x-mark-32.png" v-on:click="removeTask()" />
       </div>
     </div>
   `,
@@ -18,7 +17,6 @@ export default {
   props: ['task'],
   data () {
     return {
-      is_editing: true,
       name: '',
     };
   },
@@ -26,9 +24,8 @@ export default {
     this.name = this.task.name;
   },
   methods: {
-    renameTask () {
-      this.$store.commit('renameTask', {id: this.task.id, name: this.name});
-      this.is_editing = false;
+    removeTask () {
+      this.$store.commit('removeTask', this.task.id);
     }
   }
 };
