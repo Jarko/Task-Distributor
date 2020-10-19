@@ -10,7 +10,7 @@ export default {
       <div v-show="!is_editing">{{ task.name }}</div>
       <div v-show="is_editing" class="task__edit">
         <input v-model="name" type="text" placeholder="Name"></input>
-        <btn v-on:click="renameTask()" label="Accept"></btn>
+        <btn class="buttton__input" v-on:click="renameTask()" label="Accept"></btn>
       </div>
     </div>
   `,

@@ -10,7 +10,7 @@ export default {
       <div v-show="!is_editing">{{ person.name }}</div>
       <div v-show="is_editing" class="person__edit">
         <input v-model="name" type="text" placeholder="Name"></input>
-        <btn v-on:click="renamePerson()" label="Accept"></btn>
+        <img class="delete" src="./resources/x-mark-32.png" v-on:click="renamePerson()" />
       </div>
     </div>
   `,

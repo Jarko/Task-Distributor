@@ -1,7 +1,7 @@
 export default {  
   name: 'btn',
   template: `
-    <button @click="click()" :data-disabled="is_disabled ? 0 : 1">{{ label }}</button>
+    <div class="button" @click="click()" :data-disabled="is_disabled ? 0 : 1">{{ label }}</div>
   `,
 
   props: {
