@@ -1,14 +1,12 @@
 export default {  
-  name: 'btn',
+  name: 'delete',
   template: `
-    <div class="btn" @click="click()" :data-disabled="is_disabled ? 0 : 1">{{ label }}</div>
+    <div class="add-btn" @click="click()">{{ label }}</div>
   `,
 
   props: {
     label: {type: String},
-    is_disabled: {type: Boolean, default: false}
   },
-
   methods: {
     click () {
       if(!this.is_disabled) {

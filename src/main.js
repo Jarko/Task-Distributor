@@ -130,7 +130,7 @@ new Vue({
       this.weighted_people.forEach((person, person_index) => {
         let has_task = picked_ids.find(id => id === person.id);
         if(!has_task) {
-          this.tasks.forEach((task, task_index) => {
+          this.filled_tasks.forEach((task, task_index) => {
             this.weighted_people[person_index].tasks[task_index].weight += this.skipped_occurence_weight;
           })
           

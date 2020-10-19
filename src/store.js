@@ -2,8 +2,8 @@ export default new Vuex.Store({
   state: {
     next_person_id: 1,
     next_task_id: 1,
-    people: [],
-    tasks: [],
+    people: [{id: 0, name: ''}],
+    tasks: [{id: 0, name: ''}],
   },
   mutations: {
     addPerson(state) {

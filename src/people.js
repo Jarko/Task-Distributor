@@ -1,21 +1,18 @@
-import btn from './btn.js';
-import person from './person.js';
+import input_name from './input-name.js';
 
 export default {
   name: 'people',
   components: {
-    btn: btn,
-    person: person
+    'input-name': input_name
   },
   template: `
     <div class="people">
       <h2>People</h2>
-      <ul>
-        <li v-for="person in people" :key="person.id">
-          <person :person="person"></person>
+      <ul class="name-list">
+        <li v-for="person in people" :key="person.id" class="name-list__item">
+          <input-name :item="person" add-label="Add Person" type="Person" @added="addPerson"></input-name>
         </li>
       </ul>
-      <btn v-on:click="addPerson()" label="Add Person"></btn>
     </div>
   `,
   computed: {
