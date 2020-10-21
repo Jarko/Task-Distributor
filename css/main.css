@@ -61,6 +61,10 @@ input:focus {
 	list-style-type:none;
 }
 
+.name-list__item {
+	margin-bottom: 4px;
+}
+
 .person {
 	transition: ease .2s;
 }
@@ -80,20 +84,46 @@ input:focus {
 .input-name__edit {
 	display: flex;
 	height: 38px;
-	margin: 4px 0;
 }
 
-.plan__occurences {display: flex; flex-wrap: wrap;}
+.plan__occurences {
+	display: flex; 
+	flex-wrap: wrap;
+}
 
 .occurence {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: white 1px solid;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: white 1px solid;
 }
 
-.occurence__title {font-size: 20px;}
+.occurence__title {
+	font-size: 20px;
+}
 
-.occurence-task {margin-left: 10px;}
+.occurence-task {
+	margin-left: 10px;
+}
+
+
+/* Vue Taransitions */
+.name-list-enter-active {
+  transition: all .3s;
+}
+.name-list-leave-active {
+	transition: all .3s;
+	position: absolute;
+}
+.name-list-move {
+  transition: transform .3s;
+}
+.name-list-enter {
+  opacity: 0;
+}
+.name-list-leave-to {
+	transition: opacity .3s;
+  opacity: 0;
+}
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .7s;
@@ -104,8 +134,7 @@ input:focus {
 
 .fade-add-enter-active, .fade-add-leave-active {
   transition: opacity .1s .6s;
-  margin-top: -42px;
-  margin-bottom: 4px;
+  margin-top: -38px;
 }
 .fade-add-enter, .fade-add-leave-to {
   opacity: 0;
@@ -113,7 +142,4 @@ input:focus {
 
 .fade-add-enter-active .add-btn, .fade-add-leave-active .add-btn{
   color: transparent;
-}
-.fade-add-enter .add-btn, .fade-add-leave-to .add-btn{
- color: transparent;
 }

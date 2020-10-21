@@ -8,11 +8,11 @@ export default {
   template: `
     <div class="tasks">
       <h2>Tasks</h2>
-      <ul class="name-list">
+      <transition-group name="name-list" class="name-list" tag="ul">
         <li v-for="task in tasks" :key="task.id" class="name-list__item">
           <input-name :item="task" add-label="Add Task" type="Task" @added="addTask"></input-name>
         </li>
-      </ul>
+      </transition-group>
     </div>
   `,
 
