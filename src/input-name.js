@@ -9,20 +9,25 @@ export default {
   },
   template: `
     <div class="input-name">
-      <div v-show="is_added" class="input-name__edit">
-        <input v-model="name" type="text" placeholder="Name"></input>
-        <delete-btn @click="removePerson()"></delete-btn>
-      </div>
-      <div v-show="!is_added" class="input-name__add">
-        <add-btn @click="added" :label="addLabel"></add-btn>
-      </div>
+      <transition name="fade">
+        <div v-if="is_added" class="input-name__edit">
+          <input v-model="name" type="text" placeholder="Name" :ref="input_ref"></input>
+          <delete-btn @click="removePerson()"></delete-btn>
+        </div>
+      </transition>
+      <transition name="fade-add">
+        <div v-if="!is_added" class="input-name__add">
+          <add-btn @click="added" :label="addLabel"></add-btn>
+        </div>
+      </transition>
     </div>
   `,
 
   props: ['item','addLabel', 'type'],
-  data: () => {
+  data: function ()  {
     return {
-      is_added: false
+      is_added: false,
+      input_ref: 'input-name-' + this.item.id
     };
   },
   computed: {
@@ -42,6 +47,10 @@ export default {
     added () {
       this.is_added = true;
       this.$emit('added');
+
+      this.$nextTick(() => {
+        this.$refs[this.input_ref].focus();
+      });
     } 
   }
 };

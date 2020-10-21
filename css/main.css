@@ -1,6 +1,7 @@
 html, button, input, select, textarea, p, a {
     color: #EEE;
-    background: #272823
+    background: #272823;
+    font-family: Trebuchet MS;
 }
 * {
   box-sizing: border-box;
@@ -31,11 +32,10 @@ input:focus {
 	border: 2px solid #29668f;
 	cursor: pointer;
 	color: #ffffff;
-	font-family: Trebuchet MS;
-	font-size: 16px;
 	font-weight: bold;
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #3d768a;
+	transition: ease .2s
 }
 .btn:hover {
 	background-color:#408c99;
@@ -43,14 +43,18 @@ input:focus {
 
 .add-btn {
 	width: 200px;
+	height: 38px;
 	padding: 6px 14px;
 	border-radius: 9px;
-	border: 2px dashed #EEE;
+	border: 1px dashed #EEE6;
 	cursor: pointer;
-	color: #EEE;
-	font-family: Trebuchet MS;
-	font-size: 16px;
+	color: #EEE6;
 	font-weight: bold;
+	transition: ease .2s
+}
+.add-btn:hover {
+	border-color: #EEE;
+	color: #EEE;
 }
 
 .name-list {
@@ -90,3 +94,26 @@ input:focus {
 .occurence__title {font-size: 20px;}
 
 .occurence-task {margin-left: 10px;}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .7s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.fade-add-enter-active, .fade-add-leave-active {
+  transition: opacity .1s .6s;
+  margin-top: -42px;
+  margin-bottom: 4px;
+}
+.fade-add-enter, .fade-add-leave-to {
+  opacity: 0;
+}
+
+.fade-add-enter-active .add-btn, .fade-add-leave-active .add-btn{
+  color: transparent;
+}
+.fade-add-enter .add-btn, .fade-add-leave-to .add-btn{
+ color: transparent;
+}
