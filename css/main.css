@@ -47,6 +47,7 @@ input:focus {
 	padding: 6px 14px;
 	border-radius: 9px;
 	border: 1px dashed #EEE6;
+	background: transparent;
 	cursor: pointer;
 	color: #EEE6;
 	font-weight: bold;

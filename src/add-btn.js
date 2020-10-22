@@ -1,7 +1,7 @@
 export default {  
   name: 'delete',
   template: `
-    <div class="add-btn" @click="click()">{{ label }}</div>
+    <button class="add-btn" @click="click()">{{ label }}</button>
   `,
 
   props: {
