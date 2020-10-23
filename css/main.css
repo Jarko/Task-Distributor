@@ -23,6 +23,11 @@ input:focus {
 	border-color: #80bdff;
 }
 
+.container {
+	margin: 0 auto;
+	max-width: 960px;
+}
+
 .btn {
 	display: inline-block;
 	margin-top: 4px;
@@ -86,6 +91,50 @@ input:focus {
 	display: flex;
 	height: 38px;
 }
+
+.occurrences {
+	display: flex;
+}
+.occurrences__input {
+	width: 40px;
+	border: 0 solid #29668f;
+	border-width: 2px 0;
+	border-radius: 0;
+	text-align: center;
+}
+.occurrences__input:focus {
+	border-color: #29668f;
+}
+
+.increment-btn {
+	width: 26px;
+	height: 31px;
+	padding: 0;
+	border: 2px solid #29668f;
+	border-width: 2px 1px;
+	background: #599bb3;
+	text-shadow: 0px 1px 0px #3d768a;
+	cursor: pointer;
+	font-weight: bold;
+	transition: ease .2s;
+}
+.increment-btn:hover {
+	background: #408c99;
+}
+
+.increment-btn--right {
+	width: 32px;
+	border-left-width: 0;
+	border-right-width: 2px;
+	border-radius: 0 9px 9px 0;
+}
+.increment-btn--left {
+	width: 32px;
+	border-right-width: 0;
+	border-left-width: 2px;
+	border-radius: 9px 0 0 9px;
+}
+
 
 .plan__occurences {
 	display: flex; 

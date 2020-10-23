@@ -2,6 +2,7 @@ import store from './store.js';
 import btn from './btn.js';
 import tasks from './tasks.js';
 import people from './people.js';
+import occurrences from './occurrences.js';
 import plan from './plan.js';
 
 new Vue({
@@ -10,15 +11,16 @@ new Vue({
     btn: btn,
     tasks: tasks,
     people: people,
+    occurrences: occurrences,
     plan: plan
   },
   template: `
-    <div class="main">
+    <div class="container">
       <h1>Task Distributor</h1>
       <people></people>
       <tasks></tasks>
       <h2>Number of occurrences</h2>
-      <input  v-model="occurrences"/>
+      <occurrences></occurrences>
       <div class="calculate-btn">
         <btn v-on:click="createPlan()" label="Calculate"></btn>
       </div>
@@ -26,7 +28,6 @@ new Vue({
     </div>
   `,
   data: {
-    occurrences: 0,
     plan: [],
     weighted_people: [],
     skipped_occurence_weight: 100,
@@ -48,6 +49,9 @@ new Vue({
       return this.tasks.filter(task => {
         return task.name;
       });
+    },
+    occurrences() {
+      return store.state.occurrences;
     },
     is_planned() {
       return this.plan ? true : false;

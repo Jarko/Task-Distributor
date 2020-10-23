@@ -4,6 +4,7 @@ export default new Vuex.Store({
     next_task_id: 1,
     people: [{id: 0, name: ''}],
     tasks: [{id: 0, name: ''}],
+    occurrences: 1,
   },
   mutations: {
     addPerson(state) {
@@ -50,6 +51,9 @@ export default new Vuex.Store({
       });
 
       console.log("removed task " + target_id);
+    },
+    setOccurrences(state, value) {
+      state.occurrences = value;
     },
   }
 });
