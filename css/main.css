@@ -245,12 +245,13 @@ input:focus {
 .occurence {
 	width: 190px;
 	margin-bottom: 10px;
-	border: white 1px solid;
+	border: #FFF 1px solid;
 }
 .occurence__title {
 	text-align: center;
 	font-size: 20px;
-	border-bottom: white 1px solid;
+	border-bottom: #FFF 1px solid;
+	background-color: #FFF6;
 }
 .occurence__tasks {
 	margin-top: 10px;
