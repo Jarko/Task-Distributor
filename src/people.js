@@ -8,10 +8,10 @@ export default {
   template: `
     <div class="people">
       <h2>People</h2>
-      <transition-group name="name-list" class="name-list" tag="ul">
-        <li v-for="person in people" :key="person.id" class="name-list__item">
-          <input-name :item="person" add-label="Add Person" type="Person" @added="addPerson"></input-name>
-        </li>
+      <transition-group name="name-list" class="name-list">
+        <div v-for="person in people" :key="person.id" class="name-list__item">
+          <input-name :item="person" add-label="Add Person" :useWeights="false" type="Person" @added="addPerson"></input-name>
+        </div>
       </transition-group>
     </div>
   `,

@@ -1,17 +1,17 @@
 export default {  
   name: 'btn',
   template: `
-    <div class="btn" @click="click()" :data-disabled="is_disabled ? 0 : 1">{{ label }}</div>
+    <div class="btn" :class="{ 'btn--disabled': isDisabled }" @click="click()">{{ label }}</div>
   `,
 
   props: {
     label: {type: String},
-    is_disabled: {type: Boolean, default: false}
+    isDisabled: {type: Boolean, default: false}
   },
 
   methods: {
     click () {
-      if(!this.is_disabled) {
+      if(!this.isDisabled) {
         this.$emit('click');
       }
     }

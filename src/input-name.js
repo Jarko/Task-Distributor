@@ -11,8 +11,15 @@ export default {
     <div class="input-name">
       <transition name="fade">
         <div v-if="is_added" class="input-name__edit">
-          <input v-model="name" type="text" placeholder="Name" :ref="input_ref"></input>
-          <delete-btn @click="removePerson()"></delete-btn>
+          <div class="input-name__name">
+            <input v-model="name" placeholder="Name" :ref="input_ref"></input>
+          </div>
+          <transition name="weight-toggle">
+            <div v-if="show_weights" class="input-name__weight">
+              <input v-model.number="weight" placeholder="Weight"></input>
+            </div>
+          </transition>
+          <delete-btn @click="remove()"></delete-btn>
         </div>
       </transition>
       <transition name="fade-add">
@@ -23,11 +30,11 @@ export default {
     </div>
   `,
 
-  props: ['item','addLabel', 'type'],
-  data: function ()  {
+  props: ['item','addLabel', 'type', 'useWeights'],
+  data () {
     return {
       is_added: false,
-      input_ref: 'input-name-' + this.item.id
+      input_ref: 'input-name-' + this.item.id, 
     };
   },
   computed: {
@@ -35,13 +42,24 @@ export default {
       get () {
         return this.item.name;
       },
-      set (name) {
-        this.$store.commit('rename' + this.type, {id: this.item.id, name: name});
+      set (value) {
+        this.$store.commit('update' + this.type, {id: this.item.id, name: value, weight: this.weight});
       }
+    },
+    weight: {
+      get () {
+        return this.item.weight;
+      },
+      set (value) {
+        this.$store.commit('update' + this.type, {id: this.item.id, name: this.name, weight: value});
+      }
+    },
+    show_weights () {
+      return this.useWeights && this.$store.state.is_weighted;
     }
   },
   methods: {
-    removePerson () {
+    remove () {
       this.$store.commit('remove' + this.type, this.item.id);
     },
     added () {

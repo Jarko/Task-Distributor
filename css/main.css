@@ -8,15 +8,25 @@ html, button, input, select, textarea, p, a {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
-a{cursor: pointer; color: crimson}
-body {font-size: 1em; line-height: 1.4; }
+a {
+	cursor: pointer; 
+	color: crimson}
+body {
+	font-size: 1em; 
+	line-height: 1.4; 
+}
+h2 {
+	margin-bottom: 10px;
+}
 
 input {
-	width: 200px;
+	width: 100%;
+	height: 100%;
 	padding: 4px;
 	font-size: 1em;
 	border: 1px solid #EEE;
 	border-radius: 9px;
+	background-color: #373833;
 }
 
 input:focus {
@@ -46,6 +56,14 @@ input:focus {
 	background-color:#408c99;
 }
 
+.btn--disabled {
+	background-color: #666;
+	color: #EEE6;
+	text-shadow: none;
+	cursor: default;
+	pointer-events: none;
+}
+
 .add-btn {
 	width: 200px;
 	height: 38px;
@@ -61,6 +79,71 @@ input:focus {
 .add-btn:hover {
 	border-color: #EEE;
 	color: #EEE;
+}
+
+.calculate-btn {
+	margin-bottom: 20px;
+}
+
+.toggle__container {
+	display: flex;
+
+}
+.toggle__label {
+	margin-left: 4px;
+}
+
+.info {
+	color: #EEE6;
+	font-size: 12px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+}
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #666;
+  border-radius: 34px;
+  transition: .4s;
+}
+.slider:before {
+	position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+.slider--on {
+	background-color: #599bb3;
+}
+.slider--on:before {
+  transform: translateX(22px);
+}
+
+.list-container {
+	display: flex;
+}
+
+.people {
+	margin-right: 50px;
 }
 
 .name-list {
@@ -79,6 +162,7 @@ input:focus {
 	display: flex;
 	justify-content: center;
 	width: 26px;
+	padding-left: 4px;
 }
 .delete__img {
 	height: 50%;
@@ -91,10 +175,14 @@ input:focus {
 	display: flex;
 	height: 38px;
 }
-
-.occurrences {
-	display: flex;
+.input-name__name {
+	width: 200px;
+	margin-right: 4px;
 }
+.input-name__weight {
+	width: 50px;
+}
+
 .occurrences__input {
 	width: 40px;
 	border: 0 solid #29668f;
@@ -104,6 +192,10 @@ input:focus {
 }
 .occurrences__input:focus {
 	border-color: #29668f;
+	background-color: #373833;
+}
+.occurrences__container {
+	display: flex;
 }
 
 .increment-btn {
@@ -121,6 +213,13 @@ input:focus {
 .increment-btn:hover {
 	background: #408c99;
 }
+.increment-btn--disabled {
+	background-color: #666;
+	color: #EEE6;
+	text-shadow: none;
+	cursor: default;
+	pointer-events: none;
+}
 
 .increment-btn--right {
 	width: 32px;
@@ -135,26 +234,46 @@ input:focus {
 	border-radius: 9px 0 0 9px;
 }
 
-
+.plan__title {
+	margin-bottom: 0;
+}
 .plan__occurences {
 	display: flex; 
 	flex-wrap: wrap;
 }
 
 .occurence {
-	padding: 10px;
+	width: 190px;
 	margin-bottom: 10px;
 	border: white 1px solid;
 }
-
 .occurence__title {
+	text-align: center;
 	font-size: 20px;
+	border-bottom: white 1px solid;
+}
+.occurence__tasks {
+	margin-top: 10px;
+}
+.occurence__task {
+  padding: 0 10px;
+}
+.occurence__task:nth-child(2n) {
+	background-color: #373833;
+}
+.occurence__task:last-child {
+	padding-bottom: 10px;
 }
 
-.occurence-task {
-	margin-left: 10px;
+.task {
+	display: flex;
 }
-
+.task__name {
+	flex: 1 1 auto;
+}
+.task__people {
+	/*flex: 5 1 auto;*/
+}
 
 /* Vue Taransitions */
 .name-list-enter-active {
@@ -190,6 +309,14 @@ input:focus {
   opacity: 0;
 }
 
-.fade-add-enter-active .add-btn, .fade-add-leave-active .add-btn{
+.fade-add-enter-active .add-btn, .fade-add-leave-active .add-btn {
   color: transparent;
+}
+
+.weight-toggle-enter-active, .weight-toggle-leave-active {
+  transition: width .4s, opacity .2s;
+}
+.weight-toggle-enter, .weight-toggle-leave-to {
+  opacity: 0;
+  width: 0;
 }
